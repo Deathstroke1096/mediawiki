@@ -1,0 +1,50 @@
+[
+    {
+        "ParameterKey": "ASGGreenSize",
+        "ParameterValue": "1"
+    },
+    {
+        "ParameterKey": "ASGBlueSize",
+        "ParameterValue": "1"
+    },
+    {
+        "ParameterKey": "ASGSizeMinSize",
+        "ParameterValue": "1"
+    },
+    {
+        "ParameterKey": "ASGSizeMaxSize",
+        "ParameterValue": "4"
+    },
+    {
+        "ParameterKey": "VPCId",
+        "ParameterValue": "vpc-02b015633030ccdb1"
+    },
+    {
+        "ParameterKey": "Subnets",
+        "ParameterValue": "subnet-0fe4f081da2e1f7d2,subnet-08ff68831cffce201"
+    },
+    {
+        "ParameterKey": "InstanceType",
+        "ParameterValue": "t2.micro"
+    },
+    {
+        "ParameterKey": "KeyName",
+        "ParameterValue": "my-key-pair"
+    },
+    {
+        "ParameterKey": "InternalELBName",
+        "ParameterValue": "bluegreen-alb"
+    },
+    {
+        "ParameterKey": "AppListenerColor",
+        "ParameterValue": "blue"
+    },
+    {
+        "ParameterKey": "TargetGroupBlueName",
+        "ParameterValue": "web-app-blue"
+    },
+    {
+        "ParameterKey": "TargetGroupGreenName",
+        "ParameterValue": "web-app-green"
+    }
+]
