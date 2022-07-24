@@ -1,6 +1,6 @@
 -
   name: Setting Up MediaWiki
-  hosts: all
+  hosts: servers
   become: yes
   tasks:
     - name: update the system

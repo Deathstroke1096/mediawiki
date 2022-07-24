@@ -20,8 +20,8 @@ def getInstanceIdByTagName(value, reg):
             for each_tag in instance.get("Tags"):
                 if each_tag.get("Key") == "aws:cloudformation:stack-name" and each_tag.get("Value") == value:
                     if instance["State"]["Name"] == "running":
-                        print(instance['PrivateIpAddress'])
-                        instanceList.append(instance["PrivateIpAddress"])
+                        print(instance['PublicIpAddress'])
+                        instanceList.append(instance["PublicIpAddress"])
     
     if len(instanceList) > 0:
         msg = "Totally %s EC2 machines to process in the aws region %s...!!!" % (len(instanceList), reg)
@@ -67,4 +67,4 @@ def lambda_handler(event, context):
             for instance in reservation['Instances']:
                print(instance.get("PublicIpAddress"))
 
-instanceList = getInstanceIdByTagName('new-blue-green', 'ap-south-1')
+instanceList = getInstanceIdByTagName('blue-green', 'us-east-1')

@@ -36,7 +36,7 @@ def writeToInventoryFile(instanceList):
         contents.remove(val)
 
     index = 1
-    msg = "node{} ansible_host={} ansible_connection=ssh ansible_user=ec2-user ansible_ssh_private_key_file=/tmp/my-key-pair.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'\n"
+    msg = "node{} ansible_host={} ansible_connection=ssh ansible_user=ec2-user ansible_ssh_private_key_file=/tmp/ansible/key.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'\n"
     for ip in instanceList:
         data = msg.format(index, ip)
         contents.insert(index, data)
@@ -48,5 +48,5 @@ def writeToInventoryFile(instanceList):
     f.close()
 
 
-instanceList = getInstanceIdByTagName('new-blue-green', 'ap-south-1')
+instanceList = getInstanceIdByTagName('blue-green','us-east-1')
 writeToInventoryFile(instanceList)

@@ -3,10 +3,10 @@ Resources:
   ELBSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-        GroupDescription: http to client host
+        GroupDescription: Allow http to client host
         GroupName: AppELBSecurityGroup
         VpcId: 
-          Ref: VPCId
+          Ref: MyVPCId
         SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
@@ -20,10 +20,10 @@ Resources:
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-        GroupDescription: http to client host
+        GroupDescription: Allow http to client host
         GroupName: AppInstanceSecurityGroup
         VpcId: 
-          Ref: VPCId
+          Ref: MyVPCId
         SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
@@ -52,7 +52,7 @@ Resources:
       Subnets:
         Ref: Subnets
       Type: application
-      
+  
   AppELBTargetGroupBlue:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
@@ -74,7 +74,7 @@ Resources:
         Value: '20'
       UnhealthyThresholdCount: 2
       VpcId:
-        Ref: VPCId
+        Ref: MyVPCId
     DependsOn:
     - AppELB
   AppELBTargetGroupGreen:
@@ -98,7 +98,7 @@ Resources:
         Value: '20'
       UnhealthyThresholdCount: 2
       VpcId:
-        Ref: VPCId
+        Ref: MyVPCId
     DependsOn:
     - AppELB
   AppELBDefaultListener:
@@ -186,7 +186,7 @@ Resources:
       - DeviceName: "/dev/xvda"
         Ebs:
           DeleteOnTermination: true
-          VolumeSize: 30
+          VolumeSize: 8
           VolumeType: gp2
       EbsOptimized: false
       ImageId:
@@ -207,7 +207,7 @@ Resources:
           yum install httpd -y
           systemctl start httpd.service
           systemctl enable httpd.service
-          echo "<h1>Hello World welcome to green deployment.</h1>" > /var/www/html/index.html
+          echo "<h1>Hello World welcome to blue green deployment.</h1>" > /var/www/html/index.html
     DependsOn:
     - InstanceSecurityGroup
   AppAutoScalingBlue:
@@ -243,7 +243,7 @@ Resources:
       - DeviceName: "/dev/xvda"
         Ebs:
           DeleteOnTermination: true
-          VolumeSize: 30
+          VolumeSize: 8
           VolumeType: gp2
       EbsOptimized: false
       ImageId:
@@ -264,7 +264,7 @@ Resources:
           yum install httpd -y
           systemctl start httpd.service
           systemctl enable httpd.service
-          echo "<h1>Hello World welcome to blue deployment.</h1>" > /var/www/html/index.html
+          echo "<h1>Hello World welcome to blue green deployment.</h1>" > /var/www/html/index.html
     DependsOn:
     - InstanceSecurityGroup
   
@@ -285,7 +285,7 @@ Parameters:
     Description: Max number of EC2 instances in Auto Scaling Group
     Type: Number
     Default: 4
-  VPCId:
+  MyVPCId:
     Description: VPC Id
     Type: AWS::EC2::VPC::Id
   Subnets:
@@ -301,7 +301,7 @@ Parameters:
   KeyName:
     Description: EC2 key pair
     Type: String
-    Default: my-key-pair
+    Default: my_ec2_key
   InternalELBName:
     Description: Internal ELB Name Assigned
     Type: String
@@ -324,8 +324,8 @@ Parameters:
 
 Mappings:
   RegionMap:
-    ap-south-1:
-      AMI: ami-04b412847162495a3
+    us-east-1:
+      AMI: ami-098f16afa9edf40be
 
 Outputs:
   ELBFQDN:

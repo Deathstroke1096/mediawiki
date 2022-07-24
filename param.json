@@ -16,12 +16,12 @@
         "ParameterValue": "4"
     },
     {
-        "ParameterKey": "VPCId",
-        "ParameterValue": "vpc-02b015633030ccdb1"
+        "ParameterKey": "MyVPCId",
+        "ParameterValue": "vpc-02a38ca3af1bf762b"
     },
     {
         "ParameterKey": "Subnets",
-        "ParameterValue": "subnet-0fe4f081da2e1f7d2,subnet-08ff68831cffce201"
+        "ParameterValue": "subnet-0e3e1f5ca05985c98,subnet-0fd24df92c09e1c1e,subnet-08330a5efb0688885,subnet-0a679b27e2863b42b,subnet-0654c5cbef7971c31,subnet-064ca35ff6d436562"
     },
     {
         "ParameterKey": "InstanceType",
@@ -29,7 +29,7 @@
     },
     {
         "ParameterKey": "KeyName",
-        "ParameterValue": "my-key-pair"
+        "ParameterValue": "my_ec2_key"
     },
     {
         "ParameterKey": "InternalELBName",
