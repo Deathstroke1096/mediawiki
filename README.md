@@ -71,9 +71,9 @@
 
 
 ## perfrom run the playbook
-1. ```cd /tmp/ansible```
-2. ```ansible-playbbok playbook.yaml -i inventory.txt```
-3. you get outputs like this
+
+1. ```ansible-playbbok playbook.yaml -i inventory.txt```
+2. you get outputs like this
 ![ansible-1](https://user-images.githubusercontent.com/49493062/180639311-b7b94e86-e225-46bd-ba77-d83d5ac1bc79.JPG)
 ![ansible-2](https://user-images.githubusercontent.com/49493062/180639318-1c1c1567-7228-47ec-8f67-afa67d82c247.JPG)
 ![ansible-3](https://user-images.githubusercontent.com/49493062/180639323-9b72df25-4c9c-469c-a827-077560a6c966.JPG)
